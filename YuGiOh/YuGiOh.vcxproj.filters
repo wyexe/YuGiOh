@@ -16,6 +16,18 @@
     <Filter Include="MyTools">
       <UniqueIdentifier>{445cf716-0a5d-4283-8252-494e85d6dbfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{a05af183-321b-4ed4-af76-6350a3f4fc08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Output">
+      <UniqueIdentifier>{b47322db-a258-4fc2-9f5e-d3c6aaa2d625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Card">
+      <UniqueIdentifier>{59e84882-f4b1-4321-bdda-9d956198dca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{5fc42ef8-3ef2-44c0-b169-5d575dd2ecde}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,6 +87,21 @@
     <ClInclude Include="..\..\MyTools\MyTools\ToolsPublic.h">
       <Filter>MyTools</Filter>
     </ClInclude>
+    <ClInclude Include="TextExpr.h">
+      <Filter>Core\Output</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>Core\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="CardExtend.h">
+      <Filter>Core\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="CardAction.h">
+      <Filter>Core\Card</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEnviroment.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -121,6 +148,18 @@
     </ClCompile>
     <ClCompile Include="..\..\MyTools\MyTools\TimeTick.cpp">
       <Filter>MyTools</Filter>
+    </ClCompile>
+    <ClCompile Include="TextExpr.cpp">
+      <Filter>Core\Output</Filter>
+    </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>Core\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="CardExtend.cpp">
+      <Filter>Core\Card</Filter>
+    </ClCompile>
+    <ClCompile Include="CardAction.cpp">
+      <Filter>Core\Card</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

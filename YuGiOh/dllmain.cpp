@@ -1,6 +1,8 @@
 // dllmain.cpp : Defines the entry point for the DLL application.
 #include "stdafx.h"
-
+#include <MyTools/Log.h>
+#include <MyTools/CmdLog.h>
+#include "TextExpr.h"
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
                        LPVOID lpReserved
@@ -9,6 +11,9 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
+		MyTools::CLog::GetInstance().SetClientName(L"YuGiOh", L"F:\\YuGiOh\\");
+		MyTools::CCmdLog::GetInstance().Run(L"YuGiOh", CTextExpr::GetInstance().GetVec());
+		break;
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:
 	case DLL_PROCESS_DETACH:
