@@ -10,3 +10,4 @@ I Finished 4 functions <br>
 4、Pumping Card <br>
 
 
+.........................wait to finish Manual
