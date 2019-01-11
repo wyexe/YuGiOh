@@ -8,6 +8,5 @@ I Finished 4 functions <br>
 2、Replace Card on Hand <br>
 3、Replace Card Order on Card Group <br>
 4、Pumping Card <br>
-
-
-.........................wait to finish Manual
+5、 Hook Pull Card.  Automaic set Pull Card Count = 2 when Round = self  <br>
+6、Reset Monster Star (for example: >= 5 Star to 4 Star)
