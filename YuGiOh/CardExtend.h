@@ -15,7 +15,7 @@ public:
 	UINT_PTR GetFullCard(_Out_ std::map<std::wstring,CCard>& MapCard) CONST;
 
 	//
-	UINT_PTR GetGroupCard(_Out_ std::map<std::wstring, CCard>& MapCard) CONST;
+	UINT_PTR GetGroupCard(_Out_ std::vector<CCard>& MapCard) CONST;
 
 	//
 	UINT_PTR GetHandCard(_Out_ std::vector<CCard>& VecCard) CONST;
@@ -37,8 +37,8 @@ public:
 
 	//
 	DWORD64  FindBaseInDesk(_In_ DWORD dwCardId) CONST;
-private:
-	DWORD* GetGrouCardPointr() CONST _NOEXCEPT;
+
+	DWORD* GetGrouCardPointr() CONST;
 private:
 
 };

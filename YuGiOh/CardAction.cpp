@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CardAction.h"
-#include <MyTools/Log.h>
-#include <MyTools/Character.h>
+#include <LogLib/Log.h>
+#include <ProcessLib/Memory/Memory.h>
 #include "CardExtend.h"
 #include "Card.h"
 
@@ -28,7 +28,7 @@ VOID CCardAction::SwapHandCard(_In_ int Index, _In_ CONST std::wstring& wsCardNa
 
 	auto  WriteValuePtr = [](_In_ DWORD64 ulAddr, _In_ DWORD dwValue)
 	{
-		auto dwCardValue = MyTools::CCharacter::ReadMemValue(ulAddr);
+		auto dwCardValue = libTools::CMemory::ReadMemValue(ulAddr);
 		LOG_CF_D(L"ulAddr=%I64X, dwCardValue=%I64X, dwValue=%X", ulAddr, dwCardValue, dwValue);
 
 		// remove low Value
@@ -40,10 +40,15 @@ VOID CCardAction::SwapHandCard(_In_ int Index, _In_ CONST std::wstring& wsCardNa
 
 	// swap
 	DWORD dwGroupCardId = static_cast<DWORD>(GroupCard.GetFullCardId());
+	DWORD dwHandCardId = static_cast<DWORD>(HandCard.GetFullCardId());
 	auto ulHandAddr = HandCard.GetBase();
+	auto ulGroupAddr = GroupCard.GetBase();
 
-	WriteValuePtr(GroupCard.GetBase(), static_cast<DWORD>(HandCard.GetFullCardId()));
-	WriteValuePtr(ulHandAddr, dwGroupCardId);
+	*reinterpret_cast<DWORD *>(ulHandAddr) = dwGroupCardId;
+	*reinterpret_cast<DWORD *>(ulGroupAddr) = dwHandCardId;
+
+	//WriteValuePtr(GroupCard.GetBase(), static_cast<DWORD>(HandCard.GetFullCardId()));
+	//WriteValuePtr(ulHandAddr, dwGroupCardId);
 }
 
 VOID CCardAction::SwapDeskCard(_In_ CONST std::wstring& wsCardName1, _In_ CONST std::wstring& wsCardName2) CONST
@@ -81,7 +86,7 @@ VOID CCardAction::SwapDeskCard(_In_ CONST std::wstring& wsCardName1, _In_ CONST 
 
 	auto  WriteValuePtr = [](_In_ DWORD64 ulAddr, _In_ DWORD dwValue)
 	{
-		auto dwCardValue = MyTools::CCharacter::ReadMemValue(ulAddr);
+		auto dwCardValue = libTools::CMemory::ReadMemValue(ulAddr);
 		LOG_CF_D(L"ulAddr=%I64X, dwCardValue=%I64X, dwValue=%X", ulAddr, dwCardValue, dwValue);
 
 		// remove low Value
@@ -92,7 +97,7 @@ VOID CCardAction::SwapDeskCard(_In_ CONST std::wstring& wsCardName1, _In_ CONST 
 	};
 
 	// swap
-	DWORD dwDeskCardId = MyTools::CCharacter::ReadDWORD(ulAddr);
+	DWORD dwDeskCardId = libTools::CMemory::ReadDWORD(ulAddr);
 
 	auto ulHandAddr = HandCard.GetBase();
 	//LOG_MSG_CF(L"DeskAddr=%I64X, DeskId=%X, HandCardBase=%I64X, HandCardId=%X", ulAddr, dwDeskCardId, ulHandAddr, static_cast<DWORD>(HandCard.GetFullCardId()));
@@ -104,7 +109,21 @@ VOID CCardAction::SwapDeskCard(_In_ CONST std::wstring& wsCardName1, _In_ CONST 
 	WriteValuePtr(ulHandAddr, dwDeskCardId);
 }
 
-VOID CCardAction::InitializeHandCard(_In_ int nIndex) CONST
+VOID CCardAction::InitializeHandCard(_In_ int ) CONST
 {
 
+}
+
+VOID CCardAction::ResetMonsterStar()
+{
+	std::vector<CCard> VecHand;
+	CCardExtend().GetHandCard(VecHand);
+	for (auto& itm : VecHand)
+		itm.ResetStar(4);
+
+
+	std::vector<CCard> VecMapCard;
+	CCardExtend().GetGroupCard(VecMapCard);
+	for (auto& itm : VecMapCard)
+		itm.ResetStar(4);
 }

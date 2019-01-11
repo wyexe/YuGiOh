@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "CardExtend.h"
-#include <MyTools/Character.h>
-#include <MyTools/CLPublic.h>
-#include <MyTools/Log.h>
+#include <ProcessLib/Memory/Memory.h>
+#include <LogLib/Log.h>
 #include "GameEnviroment.h"
 #include "Card.h"
 
@@ -21,10 +20,10 @@ UINT_PTR CCardExtend::GetFullCard(_Out_ std::map<std::wstring, CCard>& MapCard) 
 	return MapCard.size();
 }
 
-UINT_PTR CCardExtend::GetGroupCard(_Out_ std::map<std::wstring, CCard>& MapCard) CONST
+UINT_PTR CCardExtend::GetGroupCard(_Out_ std::vector<CCard>& MapCard) CONST
 {
 	auto pGroupCard = GetGrouCardPointr();
-	for (int i = 0; i < 60; ++i, pGroupCard)
+	for (int i = 0; i < 100; ++i, pGroupCard)
 	{
 		if (pGroupCard[i] == NULL)
 			continue;
@@ -32,7 +31,7 @@ UINT_PTR CCardExtend::GetGroupCard(_Out_ std::map<std::wstring, CCard>& MapCard)
 		CCard Card(static_cast<UINT_PTR>(pGroupCard[i]), reinterpret_cast<UINT_PTR>(pGroupCard + i * 4));
 		if (!Card.GetCardName().empty())
 		{
-			MapCard.emplace(std::make_pair(Card.GetCardName(), Card));
+			MapCard.emplace_back(Card);
 		}
 	}
 	return MapCard.size();
@@ -43,12 +42,12 @@ UINT_PTR CCardExtend::GetHandCard(_Out_ std::vector<CCard>& VecCard) CONST
 	for (UINT i = 0;i < 60; ++i)
 	{
 		UINT_PTR ulAddr = CURRENT_HAND_CARD_BASE + i * 4;
-		UINT_PTR ulCardId = MyTools::CCharacter::ReadMemValue(ulAddr) & 0xFFFFFFFF;
+		UINT_PTR ulCardId = libTools::CMemory::ReadMemValue(ulAddr) & 0xFFFFFFFF;
 		if (ulCardId == 0)
 			break;
 
 		//LOG_CF_D(L"CardID=%X", static_cast<DWORD>(ulCardId));
-		CCard Card(MyTools::CCharacter::ReadMemValue(ulAddr) & 0xFFFFFFFF, ulAddr);
+		CCard Card(libTools::CMemory::ReadMemValue(ulAddr) & 0xFFFFFFFF, ulAddr);
 		VecCard.push_back(std::move(Card));
 	}
 
@@ -57,15 +56,15 @@ UINT_PTR CCardExtend::GetHandCard(_Out_ std::vector<CCard>& VecCard) CONST
 
 BOOL CCardExtend::FindGroupCardByName(_In_ CONST std::wstring& wsCardName, _Out_ CCard* pCard) CONST
 {
-	std::map<std::wstring, CCard> VecCard;
+	std::vector<CCard> VecCard;
 	GetGroupCard(VecCard);
 
 	for (auto& Card : VecCard)
 	{
-		if (Card.second.GetCardName() == wsCardName)
+		if (Card.GetCardName().find(wsCardName) != -1)
 		{
 			if (pCard != nullptr)
-				*pCard = Card.second;
+				*pCard = Card;
 
 			return TRUE;
 		}
@@ -143,7 +142,7 @@ DWORD64 CCardExtend::FindBaseInDesk(_In_ DWORD dwCardId) CONST
 	for (DWORD64 i = 0; i <= 20; ++i)
 	{
 		DWORD64 ulCardAddr = ulAddr + i * 4 * 6;
-		if ((MyTools::CCharacter::ReadDWORD(ulCardAddr) & 0xFFFF) == dwCardId)
+		if ((libTools::CMemory::ReadDWORD(ulCardAddr) & 0xFFFF) == dwCardId)
 		{
 			return ulCardAddr;
 		}
@@ -152,7 +151,7 @@ DWORD64 CCardExtend::FindBaseInDesk(_In_ DWORD dwCardId) CONST
 	return NULL;
 }
 
-DWORD* CCardExtend::GetGrouCardPointr() CONST _NOEXCEPT
+DWORD* CCardExtend::GetGrouCardPointr() CONST
 {
 	return reinterpret_cast<DWORD*>(CURRENT_CARD_GROUP_BASE - CURRENT_CARD_GROUP_OFFSET);
 }

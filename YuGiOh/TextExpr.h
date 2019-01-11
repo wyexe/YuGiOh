@@ -1,16 +1,16 @@
 #ifndef __YUGIOH_CORE_OUTPUT_TEXTEXPR_H__
 #define __YUGIOH_CORE_OUTPUT_TEXTEXPR_H__
 
-#include <MyTools/ClassInstance.h>
-#include <MyTools/CLExpression.h>
+#include <Windows.h>
+#include <LogLib/CmdLog.h>
 
-class CTextExpr : public MyTools::CExprFunBase, public MyTools::CClassInstance<CTextExpr>
+class CTextExpr : public libTools::CExprFunBase
 {
 public:
 	CTextExpr() = default;
 	virtual ~CTextExpr() = default;
 
-	virtual std::vector<MyTools::ExpressionFunPtr>& GetVec();
+	virtual std::vector<libTools::ExpressionFunPtr>& GetVec();
 private:
 	virtual VOID Release();
 
@@ -36,6 +36,9 @@ private:
 
 	//
 	VOID PumpingCard(_In_ CONST std::vector<std::wstring>&);
+
+	//
+	VOID ResetMonsterStar(_In_ CONST std::vector<std::wstring>&);
 private:
 
 };

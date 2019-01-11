@@ -1,7 +1,8 @@
 #ifndef __YUGIOH_CORE_CARD_CARDACTION_H__
 #define __YUGIOH_CORE_CARD_CARDACTION_H__
 
-#include <MyTools/ToolsPublic.h>
+#include <Windows.h>
+#include <string>
 
 class CCardAction
 {
@@ -17,6 +18,9 @@ public:
 
 	//
 	VOID InitializeHandCard(_In_ int nIndex) CONST;
+
+	//
+	VOID ResetMonsterStar();
 private:
 
 };

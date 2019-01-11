@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="MyTools">
-      <UniqueIdentifier>{445cf716-0a5d-4283-8252-494e85d6dbfd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{a05af183-321b-4ed4-af76-6350a3f4fc08}</UniqueIdentifier>
     </Filter>
@@ -38,54 +35,6 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\Character.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\ClassInstance.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLAsync.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLEchoException.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLExpression.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLExpressionCalc.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLFile.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLLock.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLProcess.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLPublic.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLResManager.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CLThread.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\CmdLog.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\Log.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\TimeTick.h">
-      <Filter>MyTools</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\MyTools\MyTools\ToolsPublic.h">
-      <Filter>MyTools</Filter>
     </ClInclude>
     <ClInclude Include="TextExpr.h">
       <Filter>Core\Output</Filter>
@@ -113,42 +62,6 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\Character.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CLAsync.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CLExpression.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CLExpressionCalc.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CLFile.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CLLock.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CLProcess.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CLThread.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CmdLog.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\CPublic.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\Log.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\MyTools\MyTools\TimeTick.cpp">
-      <Filter>MyTools</Filter>
-    </ClCompile>
     <ClCompile Include="TextExpr.cpp">
       <Filter>Core\Output</Filter>
     </ClCompile>
@@ -161,5 +74,10 @@
     <ClCompile Include="CardAction.cpp">
       <Filter>Core\Card</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="GameFunc.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>

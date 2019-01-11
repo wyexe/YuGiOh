@@ -1,7 +1,8 @@
 #ifndef __YUGIOH_CORE_CARD_CARD_H__
 #define __YUGIOH_CORE_CARD_CARD_H__
 
-#include <MyTools/ToolsPublic.h>
+#include <Windows.h>
+#include <string>
 
 class CCard
 {
@@ -12,13 +13,13 @@ public:
 	CCard(_In_ UINT_PTR ulCardId, _In_ UINT_PTR dwBase);
 
 	//
-	DWORD GetPower() CONST _NOEXCEPT;
+	DWORD GetPower() CONST ;
 
 	// 
-	DWORD GetDefence() CONST _NOEXCEPT;
+	DWORD GetDefence() CONST ;
 
 	//
-	DWORD GetStarCount() CONST _NOEXCEPT;
+	DWORD GetStarCount() CONST ;
 
 	//
 	CONST std::wstring& GetCardName();
@@ -27,19 +28,22 @@ public:
 	CONST std::wstring& GetCardContent();
 
 	//
-	UINT_PTR GetCardId() CONST _NOEXCEPT;
+	UINT_PTR GetCardId() CONST ;
 
 	//
-	UINT_PTR GetFullCardId() CONST _NOEXCEPT;
+	UINT_PTR GetFullCardId() CONST ;
 
 	//
-	bool IsCard() CONST _NOEXCEPT;
+	bool IsCard() CONST ;
 
 	//
 	VOID Print();
 
 	//
-	UINT_PTR GetBase() CONST _NOEXCEPT;
+	UINT_PTR GetBase() CONST ;
+
+	//
+	VOID ResetStar(_In_ DWORD dwStar);
 private:
 	UINT_PTR     _dwCardId;
 	std::wstring _wsCardName;
