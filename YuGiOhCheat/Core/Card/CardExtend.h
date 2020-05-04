@@ -1,8 +1,10 @@
 #ifndef __YUGIOH_CORE_CARD_CARDEXTEND_H__
 #define __YUGIOH_CORE_CARD_CARDEXTEND_H__
 
+#include <Windows.h>
 #include <map>
 #include <vector>
+#include <string>
 
 class CCard;
 class CCardExtend
@@ -12,7 +14,7 @@ public:
 	~CCardExtend() = default;
 
 	//
-	UINT_PTR GetFullCard(_Out_ std::map<std::wstring,CCard>& MapCard) CONST;
+	UINT_PTR GetFullCard(_Out_ std::map<std::wstring, CCard>& MapCard) CONST;
 
 	//
 	UINT_PTR GetGroupCard(_Out_ std::vector<CCard>& MapCard) CONST;
